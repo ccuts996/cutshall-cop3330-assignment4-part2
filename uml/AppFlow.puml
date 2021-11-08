@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+
+:Load Options;
+
+if(Load All) then(\nyes\n)
+    :Load Lists;
+endif
+
+while (Close window clicked?) is (\nno)
+switch (     List Catalog\n(Loaded Lists Only)\n)
+
+case (user double clicks a list)
+
+    :List Options;
+    while(return to lists clicked?) is (\nno)
+    switch ( List Options)
+    case ( New)
+        :Add Item Prompt;
+    case ( Delete)
+        :Delete Confirmation;
+    case ( \nEdit)
+        :Add Item Prompt;
+    case ( All)
+        :Show All Items;
+    case ( Incomplete)
+        :Show Only Unmarked\n'complete' Items;
+    case ( Completed)
+        :Show Only Marked\n'complete' Items;
+    endswitch
+    endwhile
+
+case ( \n  Add)
+  :Add List Prompt;
+case ( Rename)
+  :Add List Prompt;
+case (\n Delete)
+  :Deletion Confirmation;
+case ( Save List)
+    :Save;
+case ( \n\nSave All Lists)
+    :Save;
+endswitch
+
+endwhile (yes   )
+end
+
+
+@enduml
